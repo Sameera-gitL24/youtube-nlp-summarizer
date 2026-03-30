@@ -39,3 +39,17 @@ def download_audio(url):
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
+print("🔄 Loading Whisper model...")
+model_whisper = whisper.load_model("tiny")  # fast
+print("✅ Whisper loaded!")
+
+# -------- Step 3: Speech to Text --------
+def speech_to_text():
+    files = os.listdir()
+    audio_file = [f for f in files if f.startswith("audio")][0]
+
+    print("🔄 Transcribing audio...")
+    result = model_whisper.transcribe(audio_file)
+    print("✅ Transcription done!")
+
+    return result["text"]
