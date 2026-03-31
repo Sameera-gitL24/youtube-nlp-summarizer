@@ -53,3 +53,8 @@ def speech_to_text():
     print("✅ Transcription done!")
 
     return result["text"]
+
+print("🔄 Loading summarization model...")
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
+model_sum = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
+print("✅ Model loaded!")
