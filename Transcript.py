@@ -58,3 +58,32 @@ print("🔄 Loading summarization model...")
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
 model_sum = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 print("✅ Model loaded!")
+
+# -------- Step 5: Summarization --------
+def summarize_text(text):
+    print("🔄 Generating summary...")
+
+    chunk_size = 1000
+    summaries = []
+
+    # Split text into chunks
+    for i in range(0, len(text), chunk_size):
+        chunk = text[i:i+chunk_size]
+
+        input_text = "Summarize: " + chunk
+
+        inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
+
+        outputs = model_sum.generate(
+            inputs["input_ids"],
+            max_new_tokens=100
+        )
+
+        summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        summaries.append(summary)
+
+    # Combine all summaries
+    final_summary = " ".join(summaries)
+
+    print("✅ Summary generated!")
+    return final_summary
