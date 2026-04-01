@@ -94,3 +94,20 @@ def translate_text(text, target_lang):
         return GoogleTranslator(source='auto', target=target_lang).translate(text)
     except:
         return "❌ Translation failed"
+
+def process_video(url, selected_languages):
+    download_audio(url)
+    text = speech_to_text()
+
+    if not text.strip():
+        return {"Error": "No speech detected in video"}
+
+    summary = summarize_text(text)
+
+    results = {"English": summary}
+
+    for lang in selected_languages:
+        lang_code = LANGUAGES[lang]
+        results[lang] = translate_text(summary, lang_code)
+
+    return results
