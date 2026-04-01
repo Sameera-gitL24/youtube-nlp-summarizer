@@ -87,3 +87,10 @@ def summarize_text(text):
 
     print("✅ Summary generated!")
     return final_summary
+
+# -------- Step 6: Translation --------
+def translate_text(text, target_lang):
+    try:
+        return GoogleTranslator(source='auto', target=target_lang).translate(text)
+    except:
+        return "❌ Translation failed"
