@@ -34,3 +34,17 @@ def load_models():
     return model_whisper, tokenizer, model_sum
 
 model_whisper, tokenizer, model_sum = load_models()
+
+def download_audio(url):
+    for file in os.listdir():
+        if file.startswith("audio"):
+            os.remove(file)
+
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': 'audio.%(ext)s',
+        'noplaylist': True
+    }
+
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
