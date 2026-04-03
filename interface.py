@@ -26,3 +26,11 @@ LANGUAGES = {
     "Malayalam": "ml",
     "Kannada": "kn"
 }
+@st.cache_resource
+def load_models():
+    model_whisper = whisper.load_model("tiny")
+    tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
+    model_sum = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
+    return model_whisper, tokenizer, model_sum
+
+model_whisper, tokenizer, model_sum = load_models()
