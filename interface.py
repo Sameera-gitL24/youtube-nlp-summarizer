@@ -56,3 +56,22 @@ def speech_to_text():
     result = model_whisper.transcribe(audio_file)
 
     return result["text"]
+# -------- Step 3: Summarization --------
+def summarize_text(text):
+    st.info("🔄 Generating summary...")
+
+    chunk_size = 1000
+    summaries = []
+
+    for i in range(0, len(text), chunk_size):
+        chunk = text[i:i+chunk_size]
+
+        input_text = "Summarize: " + chunk
+        inputs = tokenizer(input_text, return_tensors="pt", truncation=True)
+
+        outputs = model_sum.generate(inputs["input_ids"], max_new_tokens=100)
+
+        summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        summaries.append(summary)
+
+    return " ".join(summaries)
