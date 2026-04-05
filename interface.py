@@ -75,3 +75,10 @@ def summarize_text(text):
         summaries.append(summary)
 
     return " ".join(summaries)
+
+# -------- Step 4: Translation --------
+def translate_text(text, target_lang):
+    try:
+        return GoogleTranslator(source='auto', target=target_lang).translate(text)
+    except:
+        return "❌ Translation failed"
