@@ -101,3 +101,17 @@ def process_video(url, selected_languages):
         results[lang] = translate_text(summary, code)
 
     return results
+# -------- UI --------
+st.set_page_config(page_title="YouTube Summarizer", layout="wide")
+
+st.title("🎥 YouTube Multilingual Summarizer")
+st.write("Convert YouTube videos into summaries and translate into multiple languages 🌍")
+
+# Input
+url = st.text_input("Enter YouTube Video URL")
+
+# Language selection
+selected_languages = st.multiselect(
+    "Select Languages",
+    list(LANGUAGES.keys())
+)
