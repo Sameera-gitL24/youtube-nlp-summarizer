@@ -115,3 +115,17 @@ selected_languages = st.multiselect(
     "Select Languages",
     list(LANGUAGES.keys())
 )
+# Button
+if st.button("🚀 Generate Summary"):
+
+    if not url:
+        st.warning("Please enter a YouTube URL")
+    else:
+        with st.spinner("Processing... Please wait ⏳"):
+            result = process_video(url, selected_languages)
+
+        st.success("✅ Done!")
+
+        for lang, output in result.items():
+            st.subheader(f"🌐 {lang}")
+            st.write(output)
