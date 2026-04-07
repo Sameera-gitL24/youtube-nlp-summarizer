@@ -100,14 +100,14 @@ def process_video(url, selected_languages):
     text = speech_to_text()
 
     if not text.strip():
-        return {"Error": "No speech detected in video"}
+        return {"Error": "No speech detected"}
 
     summary = summarize_text(text)
 
     results = {"English": summary}
 
     for lang in selected_languages:
-        lang_code = LANGUAGES[lang]
-        results[lang] = translate_text(summary, lang_code)
+        code = LANGUAGES[lang]
+        results[lang] = translate_text(summary, code)
 
     return results
