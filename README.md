@@ -1,25 +1,25 @@
 # 🎥 YouTube NLP Summarizer
 
-## 📌 Description
+## 📌 Description:
 This project extracts transcripts from YouTube videos and generates summaries using Natural Language Processing (NLP) techniques.
 
 ---
 
-## 🚀 Features
+## 🚀 Features:
 - Extract transcript from YouTube videos
 - Summarize text using NLP models
 - Multi-language support
 - Streamlit-based UI
 
 ---
-## project Structure
+## project Structure:
 youtube-nlp-summarizer/
 │── app.py
 │── Transcript.py
 │── summarizer.py
 │── README.md
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack:
 Python
 Streamlit
 Transformers (HuggingFace)
@@ -27,14 +27,14 @@ Whisper / YouTube Transcript API
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation:
 
 **```**bash
 git clone https://github.com/Sameera-gitL24/youtube-nlp-summarizer.git
 cd youtube-nlp-summarizer
 pip install -r requirements.txt
 
-##🚀 Future Improvements
+## 🚀 Future Improvements:
 Improve summarization accuracy
 Add more language support
 Deploy as web app
